@@ -16,3 +16,10 @@ ul li.checked {
   font-weight: bolder;
   text-decoration: line-through;
 }
+
+.isliClicked {
+  background:green;
+  color: white;
+  font-weight: bolder;
+  text-decoration: line-through;
+}

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import ListItem from './Components/Listitem';
 
 
 
@@ -13,7 +14,7 @@ const App = () => {
 
   
   function handleSubmit(e){
-    if(taskName != 0){
+    if(taskName !== 0){
     e.preventDefault();
     setTodoList([...todoList,{id: todoList.length, name: taskName}]);
     setTaskname("");
@@ -25,20 +26,13 @@ const App = () => {
 
 
 
-  function removeItem(e){
-    console.log(e)
-    e.target.parentElement.remove()
-  }
-
-  function check (e) {
-    console.log(e)
-    if(e.target.className==='')
-    {
-      e.target.classList.toggle('checked')
-    }
-    else{
-      e.target.classList.remove('checked')
-    }
+  function removeItem(id){
+    console.log(id)
+    const newList=todoList.filter((item)=> item.id !== id)
+    console.log(newList)
+    // debugger
+    setTodoList(newList)
+    
   }
   
 
@@ -51,10 +45,12 @@ const App = () => {
       </form>
       <Typography component="h1" variant="h5">To-Do List</Typography>
       <ul>
-        {todoList.map(item => (
-          <li onClick={check} key ={item.id}>{item.name} <button onClick={removeItem}>Delete</button> </li>
-        ))}
-      </ul>
+        {todoList.map(item => ( 
+        <ListItem item = {item}
+        removeItem={removeItem}
+        />
+          ))
+      }</ul>
       </>
   )
 }
