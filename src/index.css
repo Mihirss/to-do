@@ -10,12 +10,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-ul li.checked {
-  background:green;
-  color: white;
-  font-weight: bolder;
-  text-decoration: line-through;
-}
 
 .isliClicked {
   background:green;
