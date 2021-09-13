@@ -14,7 +14,7 @@ const App = () => {
 
   
   function handleSubmit(e){
-    if(taskName !== 0){
+    if(taskName != 0){
     e.preventDefault();
     setTodoList([...todoList,{id: todoList.length, name: taskName}]);
     setTaskname("");

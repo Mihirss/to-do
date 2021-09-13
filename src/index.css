@@ -17,3 +17,49 @@ code {
   font-weight: bolder;
   text-decoration: line-through;
 }
+
+#root{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+ul {
+  margin: 10px 0px;
+  padding: 0;
+  text-align: left;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: wheat;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+ul li:nth-child(even) {
+  background:whitesmoke;
+}
+
+ul li:hover {
+  background: blue;
+  color: white;
+}
+
+button{
+  background-color:blueviolet;
+  align-items: center;
+  color:white;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 2px;
+}
