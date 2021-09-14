@@ -36,11 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.isliClicked {
-  background:green;
-  color: white;
-  font-weight: bolder;
-  text-decoration: line-through;
-}
-

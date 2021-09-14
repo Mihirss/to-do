@@ -4,6 +4,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(9,139,160);
+  background: linear-gradient(90deg, rgba(9,139,160,1) 0%, rgba(243,0,255,1) 100%);
 }
 
 code {
@@ -12,7 +14,7 @@ code {
 }
 
 .isliClicked {
-  background:green;
+  background:#757575;
   color: white;
   font-weight: bolder;
   text-decoration: line-through;
@@ -36,36 +38,24 @@ ul {
 }
 
 ul li {
-  cursor: pointer;
+  display: flex;
   position: relative;
-  padding: 12px 8px 12px 40px;
-  background: wheat;
+  padding-left: 10px;
+  margin-top: 5px;
+  background: #f50057;
   color: black;
   font-size: 18px;
   font-weight: bold;
   transition: 0.2s;
-}
-
-ul li:nth-child(even) {
-  background:whitesmoke;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 10px 10px 5px rgb(249, 137, 255);
 }
 
 ul li:hover {
-  background: blue;
+  background: #ff76a6;
   color: white;
+  border: 2px solid #a7305a;
+  transition: 0.2s;
 }
 
-button{
-  background-color:blueviolet;
-  align-items: center;
-  color:white;
-  font-weight: bold;
-  border: 2px solid black;
-  border-radius: 2px;
-}
-
-.form{
-  background-color: whitesmoke;
-  border: 2px solid gray;
-  box-shadow: gray 15px 12px 10px 0px;
-}
