@@ -49,6 +49,7 @@ ul li {
   transition: 0.2s;
   justify-content: space-between;
   align-items: center;
+  border-radius: 5px;
   box-shadow: 10px 10px 5px rgb(249, 137, 255);
 }
 
