@@ -7,19 +7,34 @@ import { Grid, Paper } from '@material-ui/core';
 import Add from '@material-ui/icons/PlaylistAddOutlined';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import PlaylistAddCheckOutlinedIcon from '@material-ui/icons/PlaylistAddCheckOutlined';
+import Snackbar from '@material-ui/core/Snackbar';
+import { v4 as uuidv4 } from 'uuid';
+
+
+
 
 const App = () => {
   const [todoList, setTodoList] = useState([])// setNewtodoList. todoList, setTodoList
   const [taskName, setTaskname] = useState('')
+  const vertical = 'bottom'
+  const horizontal= 'left'
+const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
+
 
   function handleSubmit(e) {
-    if (taskName != 0) {
+    if (taskName.trim().length !== 0) {
       e.preventDefault();
-      setTodoList([...todoList, { id: todoList.length, name: taskName }]);
+      setTodoList([...todoList, { id: uuidv4(), name: taskName }]);
       setTaskname("");
     }
     else {
-      alert("To-Do List need Some Task for execute. so, Please Must be add Some Task.")
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        autoHideDuration='5s'
+        message="I love snacks"
+        open={open}
+
+      />
     }
   }
 
