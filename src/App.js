@@ -9,7 +9,7 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import PlaylistAddCheckOutlinedIcon from '@material-ui/icons/PlaylistAddCheckOutlined';
 import Snackbar from '@material-ui/core/Snackbar';
 import { v4 as uuidv4 } from 'uuid';
-
+import {Alert,AlertTitle} from '@material-ui/lab';
 
 
 
@@ -17,8 +17,8 @@ const App = () => {
   const [todoList, setTodoList] = useState([])// setNewtodoList. todoList, setTodoList
   const [taskName, setTaskname] = useState('')
   const vertical = 'bottom'
-  const horizontal= 'left'
-const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
+  const horizontal = 'left'
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
 
 
   function handleSubmit(e) {
@@ -28,17 +28,12 @@ const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
       setTaskname("");
     }
     else {
-      <Snackbar
-        anchorOrigin={{ vertical, horizontal }}
-        autoHideDuration='5s'
-        message="I love snacks"
-        open={open}
+      setIsSnackbarOpen(true)
 
-      />
     }
   }
 
-  function removeItem(id) {
+  function removeItem(index, id) {
     console.log(id)
     const newList = todoList.filter((item) => item.id !== id)
     console.log(newList)
@@ -46,10 +41,22 @@ const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
     setTodoList(newList)
   }
 
+  // find, findIndex, Entries, Splice, Slice, 
+
   const paperstyle = { padding: 20, width: 400, magin: "20px auto" }
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setIsSnackbarOpen(false);
+  };
 
   return (
     <>
+      {/* Make this into new component
+    TodolistContainer
+    */}
       <Grid>
         <Paper elevation={24} style={paperstyle}>
           <Grid align='center'>
@@ -60,12 +67,24 @@ const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
             </form>
             <PlaylistAddCheckOutlinedIcon color='secondary' fontSize='large' />
             <ul>
-              {todoList.map(item => (
-                <ListItem item={item} removeItem={removeItem} />
+              {todoList.map((item, index) => (
+                <ListItem item={item}
+                  // callback function
+                  removeItem={() => removeItem(index)}
+                  index={removeItem} />
               ))
               }
             </ul>
           </Grid>
+          <Snackbar
+            anchorOrigin={{ vertical, horizontal }}
+            autoHideDuration={3000}
+            open={isSnackbarOpen}
+            onClose={handleClose}>
+            <Alert variant="outlined" severity="warning"><AlertTitle>warning</AlertTitle>Please enter some message for add some to-do.</Alert>
+          </Snackbar>
+
+
         </Paper>
       </Grid>
     </>

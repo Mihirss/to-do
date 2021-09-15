@@ -7,12 +7,12 @@ import Dele from '@material-ui/icons/DeleteSweep';
 
 
 
-function Listitem({ item, removeItem }) {
+function Listitem({ item,index, removeItem }) {
     const [isClicked, setIsClicked] = useState(false)
     // const iconstyle={"&:hover": { Color: "yellow" }}
     return (
         <li className={clsx({ isliClicked: isClicked })} onClick={() => setIsClicked(!isClicked)} key={item.id}>{item.name}
-            <IconButton style={{ color: 'white' }} aria-label="delete" onClick={() => removeItem(item.id)}>
+            <IconButton style={{ color: 'white' }} aria-label="delete" onClick={() => removeItem(index, item.id)}>
                 <Dele />
             </IconButton>
         </li>
