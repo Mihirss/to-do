@@ -15,8 +15,10 @@ import {Alert,AlertTitle} from '@material-ui/lab';
 
 const App = () => {
   const [todoList, setTodoList] = useState([])// setNewtodoList. todoList, setTodoList
+  // [{id, name}]
   const [undoItem,setUndoItem]= useState([])
   const [taskName, setTaskname] = useState('')
+
   const vertical = 'bottom'
   const horizontal = 'left'
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
@@ -51,9 +53,26 @@ const App = () => {
   function undo(e){
     e.preventDefault()
     console.log(undoItem)
-    undoItem.map((item) => (
-    todoList.splice(item.index,0,item.id,item.name)
-    ))
+    let newList=[...todoList]
+    let newUndoList = [...undoItem].reverse()
+
+// [newList.length -1]
+// 2
+    newUndoList.forEach(({name, id, index}, indexOfUndoList)=>{
+
+
+      newList.splice(index,0,{id,name})
+
+
+      // 
+    })
+
+    setUndoItem([])
+    // undoItem.forEach(({index,id,name}) => {
+    // newList = todoList.splice(index,0,{id,name})
+    // })
+    console.log('newlist',newList)
+    setTodoList(newList)
   }
 
   // find, findIndex, Entries, Splice, Slice, 
@@ -67,6 +86,8 @@ const App = () => {
     setIsSnackbarOpen(false);
   };
 
+  // setTaskname(name)
+  // taskName = name
   return (
     <>
       {/* Make this into new component
