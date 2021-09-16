@@ -13,7 +13,7 @@ function Listitem({ item,index, removeItem }) {
     return (
         <li className={clsx({ isliClicked: isClicked })} onClick={() => setIsClicked(!isClicked)} key={item.id}>{item.name}
             <IconButton style={{ color: 'white' }} aria-label="delete" 
-            onClick={() => removeItem(index, item.id,item.name)}
+            onClick={(e) => removeItem(index, item.id,item.name,e)}
             // onClick={() => removeItem(index, item.id)}
             >
                 <Dele />

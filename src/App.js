@@ -16,7 +16,7 @@ import {Alert,AlertTitle} from '@material-ui/lab';
 const App = () => {
   const [todoList, setTodoList] = useState([])// setNewtodoList. todoList, setTodoList
   // [{id, name}]
-  const [undoItem,setUndoItem]= useState([])
+  const [undoList,setUndoList]= useState([])
   const [taskName, setTaskname] = useState('')
 
   const vertical = 'bottom'
@@ -36,39 +36,48 @@ const App = () => {
     }
   }
 
-  function removeItem(index, id,name) {
+  function removeItem(index, id,name,e) {
+    e.stopPropagation()
     console.log(id)
-    // const undoItemArr= todoList.filter((item) => item.id ===id )
-    // console.log('i have removed this item, index',undoItemArr, index)
-    setUndoItem([...undoItem, { id: id, name: name, index:index }]);
-    // setUndoItem(undoItemArr)
-    console.log(undoItem)
+    // const undoListArr= todoList.filter((item) => item.id ===id )
+    // console.log('i have removed this item, index',undoListArr, index)
+    setUndoList([...undoList, { id: id, name: name, indexOfRemovedItem:index }]);
+    // setUndoList(undoListArr)
+    console.log(undoList)
 
 
     const newList = todoList.filter((item) => item.id !== id)
     console.log(newList)
     setTodoList(newList)
+
   }
 
   function undo(e){
     e.preventDefault()
-    console.log(undoItem)
+    console.log(undoList)
     let newList=[...todoList]
-    let newUndoList = [...undoItem].reverse()
+    let newUndoList = [...undoList].reverse()
+
+    // obj
+    const elementToAddInList = undoList[newUndoList.length - 1]
+
+  newList.splice(elementToAddInList.indexOfRemovedItem,0,elementToAddInList)
 
 // [newList.length -1]
 // 2
-    newUndoList.forEach(({name, id, index}, indexOfUndoList)=>{
+// working for all
+    // newUndoList.forEach(({name, id, index}, indexOfUndoList)=>{
 
 
-      newList.splice(index,0,{id,name})
+    //   newList.splice(index,0,{id,name})
 
 
-      // 
-    })
-
-    setUndoItem([])
-    // undoItem.forEach(({index,id,name}) => {
+    //   // 
+    // })
+    let newUndoListOrignal = [...undoList]
+    newUndoListOrignal.pop()
+    setUndoList(newUndoListOrignal)
+    // undoList.forEach(({index,id,name}) => {
     // newList = todoList.splice(index,0,{id,name})
     // })
     console.log('newlist',newList)
