@@ -15,6 +15,7 @@ import {Alert,AlertTitle} from '@material-ui/lab';
 
 const App = () => {
   const [todoList, setTodoList] = useState([])// setNewtodoList. todoList, setTodoList
+  const [undoItem,setUndoItem]= useState([])
   const [taskName, setTaskname] = useState('')
   const vertical = 'bottom'
   const horizontal = 'left'
@@ -33,12 +34,22 @@ const App = () => {
     }
   }
 
-  function removeItem(index, id) {
+  function removeItem(index, id,name) {
     console.log(id)
+    const undoItemArr= todoList.filter((item) => item.id ===id )
+    console.log('i have removed this item, index',undoItemArr, index)
+    setUndoItem([...undoItem, { id: id, name: name, index:index }]);
+    // setUndoItem(undoItemArr)
+    console.log(undoItem)
+
+
     const newList = todoList.filter((item) => item.id !== id)
     console.log(newList)
-    // debugger
     setTodoList(newList)
+  }
+
+  function undo(index,id,item){
+    
   }
 
   // find, findIndex, Entries, Splice, Slice, 
@@ -64,14 +75,14 @@ const App = () => {
             <form>
               <TextField id="outlined-basic" label="Task" variant="outlined" color="secondary" type="text" placeholder="Task here..." fullWidth required value={taskName} onChange={e => setTaskname(e.target.value)} />
               <Button variant="outlined" color="secondary" mt={10} fullWidth required startIcon={<Add />} onClick={handleSubmit}>Add To my List</Button>
+              <Button variant="outlined" color="secondary" mt={10} fullWidth required startIcon={<Add />} onClick={undo}>Undo my List</Button>
             </form>
             <PlaylistAddCheckOutlinedIcon color='secondary' fontSize='large' />
             <ul>
               {todoList.map((item, index) => (
                 <ListItem item={item}
-                  // callback function
-                  removeItem={() => removeItem(index)}
-                  index={removeItem} />
+                  removeItem={removeItem}
+                  index={index} />
               ))
               }
             </ul>

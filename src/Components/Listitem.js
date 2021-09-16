@@ -12,7 +12,10 @@ function Listitem({ item,index, removeItem }) {
     // const iconstyle={"&:hover": { Color: "yellow" }}
     return (
         <li className={clsx({ isliClicked: isClicked })} onClick={() => setIsClicked(!isClicked)} key={item.id}>{item.name}
-            <IconButton style={{ color: 'white' }} aria-label="delete" onClick={() => removeItem(index, item.id)}>
+            <IconButton style={{ color: 'white' }} aria-label="delete" 
+            onClick={() => removeItem(index, item.id,item.name)}
+            // onClick={() => removeItem(index, item.id)}
+            >
                 <Dele />
             </IconButton>
         </li>
