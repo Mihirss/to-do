@@ -4,9 +4,6 @@ import { useState } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Dele from '@material-ui/icons/DeleteSweep';
 
-
-
-
 function Listitem({ item,index, removeItem }) {
     const [isClicked, setIsClicked] = useState(false)
     // const iconstyle={"&:hover": { Color: "yellow" }}
