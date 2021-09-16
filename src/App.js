@@ -36,8 +36,8 @@ const App = () => {
 
   function removeItem(index, id,name) {
     console.log(id)
-    const undoItemArr= todoList.filter((item) => item.id ===id )
-    console.log('i have removed this item, index',undoItemArr, index)
+    // const undoItemArr= todoList.filter((item) => item.id ===id )
+    // console.log('i have removed this item, index',undoItemArr, index)
     setUndoItem([...undoItem, { id: id, name: name, index:index }]);
     // setUndoItem(undoItemArr)
     console.log(undoItem)
@@ -48,8 +48,12 @@ const App = () => {
     setTodoList(newList)
   }
 
-  function undo(index,id,item){
-    
+  function undo(e){
+    e.preventDefault()
+    console.log(undoItem)
+    undoItem.map((item) => (
+    todoList.splice(item.index,0,item.id,item.name)
+    ))
   }
 
   // find, findIndex, Entries, Splice, Slice, 
