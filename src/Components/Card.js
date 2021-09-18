@@ -4,7 +4,7 @@ function Card({item}) {
     return (
         <div>
             <div className="card">
-            {/* <img src={feedData.avatar} className="card-img-top" alt="..."> */}
+            <img src={item.avatar} className="card-img-top" alt="..."/>
             <div className ="card-body">
             <h5 className ="card-title">Name: {item.first_name}</h5>
             <p className ="card-text">Email:{item.email}</p>
