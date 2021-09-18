@@ -21,7 +21,9 @@ const TodoList = () => {
 
   const vertical = 'bottom'
   const horizontal = 'left'
+
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
+  const [isSnackUndoOpen, setisSnackUndoOpen] = useState(false)
 
 
   function handleSubmit(e) {
@@ -55,6 +57,8 @@ const TodoList = () => {
   function undo(e){
     e.preventDefault()
     console.log(undoList)
+    if(undoList.length !==0)
+    {
     let newList=[...todoList]
     let newUndoList = [...undoList].reverse()
 
@@ -82,6 +86,10 @@ const TodoList = () => {
     // })
     console.log('newlist',newList)
     setTodoList(newList)
+    }
+    else{
+      setisSnackUndoOpen(true)
+    }
   }
 
   // find, findIndex, Entries, Splice, Slice, 
@@ -93,6 +101,7 @@ const TodoList = () => {
     }
 
     setIsSnackbarOpen(false);
+    setisSnackUndoOpen(false);
   };
 
   // setTaskname(name)
@@ -126,7 +135,14 @@ const TodoList = () => {
             autoHideDuration={3000}
             open={isSnackbarOpen}
             onClose={handleClose}>
-            <Alert variant="outlined" severity="warning"><AlertTitle>warning</AlertTitle>Please enter some message for add some to-do.</Alert>
+            <Alert variant="outlined" severity="warning"><AlertTitle>Warning</AlertTitle>Please enter some message for add some to-do.</Alert>
+          </Snackbar>
+          <Snackbar
+            anchorOrigin={ {vertical: 'bottom', horizontal: 'right'} }
+            autoHideDuration={3000}
+            open={isSnackUndoOpen}
+            onClose={handleClose}>
+            <Alert variant="outlined" severity="warning"><AlertTitle>Warning</AlertTitle>No Items Available for Undo, Please Delete some Items first...</Alert>
           </Snackbar>
 
 
