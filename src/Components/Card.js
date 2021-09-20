@@ -39,6 +39,7 @@ function Card({ item }) {
                 <div className="card-columns">
                 <div class="card-header">
                 <Avatar {...stringAvatar(item.first_name)} />
+                {item.first_name}
                 </div>
                     <img src={item.avatar} className="card-img-top" alt="..." />
                     <div className="card-body">

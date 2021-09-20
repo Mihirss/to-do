@@ -99,3 +99,9 @@ ul li:hover {
   justify-content: space-between;
   align-items: center;
 }
+
+.card-header{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+}
