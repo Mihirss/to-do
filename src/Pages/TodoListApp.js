@@ -8,6 +8,7 @@ import Add from '@material-ui/icons/PlaylistAddOutlined';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import PlaylistAddCheckOutlinedIcon from '@material-ui/icons/PlaylistAddCheckOutlined';
 import Snackbar from '@material-ui/core/Snackbar';
+import RestoreIcon from '@mui/icons-material/Restore';
 import { v4 as uuidv4 } from 'uuid';
 import {Alert,AlertTitle} from '@material-ui/lab';
 
@@ -118,10 +119,10 @@ const TodoList = () => {
             <form>
               <TextField id="outlined-basic" label="Task" variant="outlined" color="secondary" type="text" placeholder="Task here..." fullWidth required value={taskName} onChange={e => setTaskname(e.target.value)} />
               <Button variant="outlined" color="secondary" mt={10} fullWidth required startIcon={<Add />} onClick={handleSubmit}>Add To my List</Button>
-              <Button variant="outlined" color="secondary" mt={10} fullWidth required startIcon={<Add />} onClick={undo}>Undo my List</Button>
+              <Button variant="outlined" color="secondary" mt={10} fullWidth required startIcon={<RestoreIcon />} onClick={undo}>Undo my List</Button>
             </form>
             <PlaylistAddCheckOutlinedIcon color='secondary' fontSize='large' />
-            <ul>
+            <ul className='list'>
               {todoList.map((item, index) => (
                 <ListItem item={item}
                   removeItem={removeItem}

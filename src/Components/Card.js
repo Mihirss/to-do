@@ -49,7 +49,6 @@ function Card({ item }) {
         <div className="card-body">
           <h5 className="card-title">Name: {item.first_name}</h5>
           <p className="card-text">Email:{item.email}</p>
-          {/* <a href="#" className ="btn btn-primary">Go somewhere</a> */}
         </div>
         <div class="card-footer">
           <FavoriteIcon/>
