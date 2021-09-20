@@ -24,8 +24,8 @@ function Card({ item }) {
         return color;
       }
 
-    function stringAvatar(item) {
-        const name= item.first_name
+    function stringAvatar(name) {
+        // const name= item.first_name
         console.log(name)
         return {
           sx: {
@@ -38,7 +38,7 @@ function Card({ item }) {
             <div className="card">
                 <div className="card-columns">
                 <div class="card-header">
-                <Avatar {...stringAvatar} />
+                <Avatar {...stringAvatar(item.first_name)} />
                 </div>
                     <img src={item.avatar} className="card-img-top" alt="..." />
                     <div className="card-body">
